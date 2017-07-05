@@ -1,0 +1,6 @@
+Estoy es un texto
+de prueba para
+probar el programa
+Oscar Castillejo 
+ " hola Mundo" a>b
+  y b<a 
