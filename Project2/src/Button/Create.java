@@ -34,7 +34,9 @@ public class Create extends JButton {
 	}
         public void buttonPress(){
             System.out.println("Soy el boton de Create");
-                                
+            main.content.panel.setVisible(true);
+            main.content._textEditor.setVisible(true);
+            main.content.game.start();
             if ( main.content._textEditor.getText().toString().length() > 0){
                 main.setAlwaysOnTop(false);
                try{
