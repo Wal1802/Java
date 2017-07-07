@@ -33,7 +33,7 @@ public class buttonHolder extends JToolBar {
 		this.add(new Undo());
 		this.add(new Redo());
 		this.add(new bPremisa(main));
-		this.add(new Regla());
+		this.add(new Regla(main));
 		this.add(new Conclusion(main));
 		
 	}

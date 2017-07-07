@@ -13,7 +13,7 @@ public class Regla extends JButton {
 
 	private static final long serialVersionUID = -1162271566827801713L;
 	
-	public Regla(){
+	public Regla(Main main){
 		super();
 		this.setToolTipText("Regla");
 		this.setIcon(new ImageIcon(Main.class.getResource("/Icon/Regla.png")));
@@ -23,7 +23,7 @@ public class Regla extends JButton {
 		this.setBackground(Color.DARK_GRAY);
 		this.addMouseListener(new MouseAdapter() {
 			public void mouseReleased(MouseEvent e){
-				
+				main.seleccion.buttonRegla();
 				System.out.println("Soy el boton de Regla");				
 			}
 		});
