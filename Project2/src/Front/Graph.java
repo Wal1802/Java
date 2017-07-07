@@ -163,31 +163,34 @@ public class Graph extends Canvas implements Runnable{
 		
 	    long lastTime = System.nanoTime();
 	    final double amountOfTicks = 60.0;
-	    double ns = 1000000000 / amountOfTicks;
-	    double delta = 0;
+	    double ns = 1000000000 / amountOfTicks; // cuantos nano segundos ocupa cada frame
+	    double delta = 0; // tiempo transcurrido desde el ultimo frame
 	    int frames = 0;
-	    long timer = System.currentTimeMillis();
+	    long timer = System.currentTimeMillis(); // tiempo del sistema
 	
 	    while(running){
+                
 	        long now = System.nanoTime();
-	        delta += (now - lastTime) / ns;
-	        lastTime = now;
-	        if(delta >= 1){
+	        delta += (now - lastTime) / ns; // calculo el delta
+	        lastTime = now; 
+                
+                
+	        if(delta >= 1){ // Master de los frames y act per seg
 	            tick();
 	            delta--;
-	        }
-	        if(running && this.isDisplayable())
+                    if(running && this.isDisplayable())
  	        	render();
-	        frames++;
-                if(frames >60)
-                    
-	
+                    frames++;
+	        }
+	        
+
 	        if(System.currentTimeMillis() - timer > 1000){
 	            timer += 1000;
 	            windown.setTitle("FPS: " + frames);
 	            frames = 0;
+                    
 	        }
-	
+                
 	    }
 	    stop();
 	}
@@ -222,7 +225,7 @@ public class Graph extends Canvas implements Runnable{
                     test.draw(g);
                     test2=test.hitbox();
                      g.setColor(Color.blue);
-                    g.drawRect(test2.x, test2.y, test2.width, test2.height);
+                    //g.drawRect(test2.x, test2.y, test2.width, test2.height);
                     g.setColor(Color.WHITE);
                 }
                 
