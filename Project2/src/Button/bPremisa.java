@@ -27,6 +27,7 @@ public class bPremisa extends JButton {
 			public void mouseReleased(MouseEvent e){
 				System.out.println("Soy el boton de Premisa");		
                                 main.seleccion.buttonPremisa();
+                                //hola
 
 			}
 		});

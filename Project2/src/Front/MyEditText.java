@@ -19,20 +19,34 @@ import javax.swing.text.StyledDocument;
 
 public class MyEditText {
     JTextPane textPane;
-            StyledDocument doc;
-            Main main;
+    StyledDocument doc;
+    Main main;
+    
+    
     public MyEditText(Main main){
             this.main=main;
-             textPane = main.content._textEditor;
-             doc = textPane.getStyledDocument();
-            
-            
-        
+            textPane = main.content._textEditor;
+            doc = textPane.getStyledDocument();
+          
     }
     
     public void buttonPremisa(){
-        Style style = textPane.addStyle(main.content._textEditor.getSelectedText(), null);
+            Style style = textPane.addStyle(main.content._textEditor.getSelectedText(), null);
             StyleConstants.setForeground(style, Color.green);
+            
+            try{
+                
+               
+                doc.insertString(main.content._textEditor.getSelectionStart(), main.content._textEditor.getSelectedText(), style);
+                doc.remove(main.content._textEditor.getSelectionStart(),main.content._textEditor.getSelectedText().length());
+               
+            }catch(Exception e){
+                
+            }
+    }
+    public void buttonRegla(){
+            Style style = textPane.addStyle(main.content._textEditor.getSelectedText(), null);
+            StyleConstants.setForeground(style, Color.yellow);
             
             try{
                 
@@ -41,6 +55,25 @@ public class MyEditText {
                 doc.remove(main.content._textEditor.getSelectionStart(),main.content._textEditor.getSelectedText().length());
             }catch(Exception e){
                 
+            }finally{
+                style = textPane.addStyle(main.content._textEditor.getText(), null);
+                StyleConstants.setForeground(style, Color.white);
+            }
+    }
+    public void buttonConclusion(){
+            Style style = textPane.addStyle(main.content._textEditor.getSelectedText(), null);
+            StyleConstants.setForeground(style, Color.blue);
+            
+            try{
+                
+                System.out.println("i= "+ main.content._textEditor.getSelectedText().length());
+                doc.insertString(main.content._textEditor.getSelectionStart(), main.content._textEditor.getSelectedText(), style);
+                doc.remove(main.content._textEditor.getSelectionStart(),main.content._textEditor.getSelectedText().length());
+            }catch(Exception e){
+                
+            }finally {
+                style = textPane.addStyle(main.content._textEditor.getText(), null);
+                StyleConstants.setForeground(style, Color.white);
             }
     }
 }

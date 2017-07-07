@@ -22,7 +22,7 @@ public class textEditor extends JTextPane implements KeyListener{
 
        // private ArrayList<String> text= new ArrayList<String>();
         private String start = "<html><head></head><body color=\"white\">\n", end ="</body></html>";
-
+//mamalo
         
 
 	private ArrayList<basicType> argumento = new ArrayList<basicType>();

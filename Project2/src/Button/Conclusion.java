@@ -23,7 +23,7 @@ public class Conclusion extends JButton {
 		this.setBackground(Color.DARK_GRAY);
 		this.addMouseListener(new MouseAdapter() {
 			public void mouseReleased(MouseEvent e){
-				
+				main.seleccion.buttonConclusion();
 				System.out.println("Soy el boton de Conclusion");				
 			}
 		});
