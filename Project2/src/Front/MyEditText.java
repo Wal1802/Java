@@ -4,16 +4,9 @@ package Front;
 
 import Type.Conclusion;
 import java.awt.Color;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import javax.swing.JEditorPane;
 import javax.swing.JTextPane;
-import javax.swing.text.BadLocationException;
-import javax.swing.text.Caret;
-import javax.swing.text.MutableAttributeSet;
 import javax.swing.text.Style;
 import javax.swing.text.StyleConstants;
-import javax.swing.text.StyleContext;
 import javax.swing.text.StyledDocument;
 
 
@@ -25,69 +18,64 @@ public class MyEditText {
     
     
     public MyEditText(Main main){
-            this.main=main;
-            textPane = main.content._textEditor;
-            doc = textPane.getStyledDocument();
+        this.main=main;
+        textPane = main.content._textEditor;
+        doc = textPane.getStyledDocument();
           
     }
     public void buttonCreate(){
         Style style = textPane.addStyle(main.content._textEditor.getText(), null);
-            StyleConstants.setForeground(style, Color.white);
-            
-            try{
-                              
-                doc.insertString(0, " ", style);
-                main.content._textEditor.setText("");
-                main.content._textEditor.moveCaretPosition(1);
-                
-            }catch(Exception e){
-                
-            }
+        StyleConstants.setForeground(style, Color.white);
+
+        try{
+            doc.insertString(0, " ", style);
+            main.content._textEditor.setText("");
+            main.content._textEditor.moveCaretPosition(1);
+        }catch(Exception e){
+
+        }
     }
     
     public void buttonPremisa(){
-            Style style = textPane.addStyle(main.content._textEditor.getSelectedText(), null);
-            StyleConstants.setForeground(style, Color.green);
-            
-            try{
-                              
-                doc.insertString(main.content._textEditor.getSelectionStart(), main.content._textEditor.getSelectedText(), style);
-                doc.remove(main.content._textEditor.getSelectionStart(),main.content._textEditor.getSelectedText().length());
-                
-            }catch(Exception e){
-                
-            }
+        Style style = textPane.addStyle(main.content._textEditor.getSelectedText(), null);
+        StyleConstants.setForeground(style, Color.green);
+
+        try{
+            doc.insertString(main.content._textEditor.getSelectionStart(), main.content._textEditor.getSelectedText(), style);
+            doc.remove(main.content._textEditor.getSelectionStart(),main.content._textEditor.getSelectedText().length());
+        }catch(Exception e){
+
+        }
     }
     public void buttonRegla(){
-            Style style = textPane.addStyle(main.content._textEditor.getSelectedText(), null);
-            StyleConstants.setForeground(style, Color.yellow);
-            
-            try{
-                
-                System.out.println("i= "+ main.content._textEditor.getSelectedText().length());
-                doc.insertString(main.content._textEditor.getSelectionStart(), main.content._textEditor.getSelectedText(), style);
-                doc.remove(main.content._textEditor.getSelectionStart(),main.content._textEditor.getSelectedText().length());
-            }catch(Exception e){
-                
-            }finally{
-                style = textPane.addStyle(main.content._textEditor.getText(), null);
-                StyleConstants.setForeground(style, Color.white);
-            }
+        Style style = textPane.addStyle(main.content._textEditor.getSelectedText(), null);
+        StyleConstants.setForeground(style, Color.yellow);
+
+        try{
+            System.out.println("i= "+ main.content._textEditor.getSelectedText().length());
+            doc.insertString(main.content._textEditor.getSelectionStart(), main.content._textEditor.getSelectedText(), style);
+            doc.remove(main.content._textEditor.getSelectionStart(),main.content._textEditor.getSelectedText().length());
+        }catch(Exception e){
+
+        }finally{
+            style = textPane.addStyle(main.content._textEditor.getText(), null);
+            StyleConstants.setForeground(style, Color.white);
+        }
     }
     public void buttonConclusion(){
-            Style style = textPane.addStyle(main.content._textEditor.getSelectedText(), null);
-            StyleConstants.setForeground(style, Color.cyan);
-            main.content._textEditor.add(new Conclusion(main.content._textEditor.getSelectedText()));
-            try{
-                
-                System.out.println("i= "+ main.content._textEditor.getSelectedText().length());
-                doc.insertString(main.content._textEditor.getSelectionStart(), main.content._textEditor.getSelectedText(), style);
-                doc.remove(main.content._textEditor.getSelectionStart(),main.content._textEditor.getSelectedText().length());
-            }catch(Exception e){
-                
-            }finally {
-                style = textPane.addStyle(main.content._textEditor.getText(), null);
-                StyleConstants.setForeground(style, Color.white);
-            }
+        Style style = textPane.addStyle(main.content._textEditor.getSelectedText(), null);
+        StyleConstants.setForeground(style, Color.cyan);
+        main.content._textEditor.add(new Conclusion(main.content._textEditor.getSelectedText()));
+        try{
+
+            System.out.println("i= "+ main.content._textEditor.getSelectedText().length());
+            doc.insertString(main.content._textEditor.getSelectionStart(), main.content._textEditor.getSelectedText(), style);
+            doc.remove(main.content._textEditor.getSelectionStart(),main.content._textEditor.getSelectedText().length());
+        }catch(Exception e){
+
+        }finally {
+            style = textPane.addStyle(main.content._textEditor.getText(), null);
+            StyleConstants.setForeground(style, Color.white);
+        }
     }
 }
