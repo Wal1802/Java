@@ -11,12 +11,9 @@ public class NuevoArchivo extends JMenuItem {
     public NuevoArchivo(){
         super("Nuevo Archivo");
         this.addMouseListener(new MouseAdapter() {
-			public void mouseReleased(MouseEvent e){
-				
-				System.out.println("Soy el boton de Nuevo archivo");				
-			}
-		});
-        
-    }
-    
+            public void mouseReleased(MouseEvent e){
+                System.out.println("Soy el boton de Nuevo archivo");				
+            }
+        });        
+    }    
 }

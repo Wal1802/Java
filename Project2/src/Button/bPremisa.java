@@ -8,11 +8,10 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 
 import Front.Main;
+import Type.Premisa;
 
 public class bPremisa extends JButton {
 
-	private static final long serialVersionUID = -1162271566827801713L;
-	public Main main;
         
 	public bPremisa(Main main){
 		super();
@@ -25,10 +24,10 @@ public class bPremisa extends JButton {
 		this.main=main;
 		this.addMouseListener(new MouseAdapter() {
 			public void mouseReleased(MouseEvent e){
-				System.out.println("Soy el boton de Premisa");		
+				System.out.println("Soy el boton de Premisa");	
+                                main.content._textEditor.setEditable(false);
                                 main.seleccion.buttonPremisa();
-                                //hola
-
+                                main.content._textEditor.add(new Premisa(main.content._textEditor.getSelectedText()));
 			}
 		});
 	}

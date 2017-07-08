@@ -11,22 +11,21 @@ import Front.Main;
 
 public class Undo extends JButton {
 
-	private static final long serialVersionUID = -1162271566827801713L;
-	
-	public Undo(){
-		super();
-		this.setToolTipText("Undo");
-		this.setIcon(new ImageIcon(Main.class.getResource("/Icon/Undo.png")));
-		this.setForeground(Color.DARK_GRAY);
-		this.setBorderPainted(false);
-		this.setBorder(null);
-		this.setBackground(Color.DARK_GRAY);
-		this.addMouseListener(new MouseAdapter() {
-			public void mouseReleased(MouseEvent e){
-				
-				System.out.println("Soy el boton de Undo");				
-			}
-		});
-	}
+    private static final long serialVersionUID = -1162271566827801713L;
+
+    public Undo(){
+        super();
+        this.setToolTipText("Undo");
+        this.setIcon(new ImageIcon(Main.class.getResource("/Icon/Undo.png")));
+        this.setForeground(Color.DARK_GRAY);
+        this.setBorderPainted(false);
+        this.setBorder(null);
+        this.setBackground(Color.DARK_GRAY);
+        this.addMouseListener(new MouseAdapter() {
+            public void mouseReleased(MouseEvent e){
+                System.out.println("Soy el boton de Undo");				
+            }
+        });
+    }
 	
 }

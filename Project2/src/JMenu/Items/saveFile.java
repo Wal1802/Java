@@ -22,9 +22,9 @@ public class saveFile extends JMenuItem{
         this.setText("Guardar Archivo");
         this.main = main;
         this.addMouseListener(new MouseAdapter() {
-			public void mouseReleased(MouseEvent e){
-				main._buttonHolder.save.save();						
-			}
-		});
+            public void mouseReleased(MouseEvent e){
+                main._buttonHolder.save.save();						
+            }
+        });
     }
 }
