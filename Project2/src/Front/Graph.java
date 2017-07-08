@@ -2,6 +2,7 @@ package Front;
 
 
 import CanvasItems.Triangle;
+import Type.Conclusion;
 import java.awt.Canvas;
 import java.awt.Color;
 import java.awt.Graphics;
@@ -14,6 +15,7 @@ import java.awt.event.MouseWheelListener;
 import java.awt.image.BufferStrategy;
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.function.Consumer;
 
 
 public class Graph extends Canvas implements Runnable{
@@ -27,21 +29,22 @@ public class Graph extends Canvas implements Runnable{
 	private final int WIDTH = 640, HEIGTH = WIDTH / 12 * 9;
 	private Thread thread;
 	private boolean running = false;
-	private Main windown;
+	private Main main;
         private MouseListener m;
         private int size =40;
         private ArrayList<Triangle> triangle = new ArrayList<Triangle>();
-	private Triangle t=new Triangle(0,0,1), move=t;
+	private Triangle t=new Triangle(0,0,1,new Conclusion("")), move=t;
         private int refX=0, refY=0;
 	private int cont =0;
         private boolean clickOnTriangle=false, clicked = false;
         private int clickedTriangle;
 	public Graph(Main main){
-            //triangle.add(t);
-            this.windown=main;
+     
+            this.main=main;
             this.setVisible(true);
             this.setBounds(0, 0, 500, 500);
             triangle.add(t);
+             triangle.add(t);
             this.addMouseWheelListener(new MouseWheelListener() {
                 @Override
                 public void mouseWheelMoved(MouseWheelEvent e) {
@@ -142,6 +145,11 @@ public class Graph extends Canvas implements Runnable{
 		
 		 
 	}
+        
+        public void addC(Conclusion c){
+            this.triangle.add(new Triangle(50,50,100, c));   
+            System.err.println(triangle.size());
+        }
 
 	public synchronized void start(){
 		thread = new Thread(this);
@@ -186,7 +194,7 @@ public class Graph extends Canvas implements Runnable{
 
 	        if(System.currentTimeMillis() - timer > 1000){
 	            timer += 1000;
-	            windown.setTitle("FPS: " + frames);
+	            main.setTitle("FPS: " + frames);
 	            frames = 0;
                     
 	        }
@@ -215,10 +223,17 @@ public class Graph extends Canvas implements Runnable{
                 g.setColor(Color.red);
 		//handler.render(g);
                 //new Triangle(40, 200, 100).draw(g);
-                Triangle test;
-                Rectangle test2;
+                  g.setColor(Color.red);
+              
                 Iterator i =triangle.iterator();
-                while(i.hasNext()){
+                i.forEachRemaining(new Consumer() {
+                    @Override
+                    public void accept(Object t) {
+                        Triangle test=(Triangle)t;
+                        test.draw(g);
+                    }
+                });
+                /*while(i.hasNext()){
                     g.setColor(Color.red);
                     //((Triangle)i.next()).act();
                     test=((Triangle)i.next());
@@ -227,7 +242,7 @@ public class Graph extends Canvas implements Runnable{
                      g.setColor(Color.blue);
                     //g.drawRect(test2.x, test2.y, test2.width, test2.height);
                     g.setColor(Color.WHITE);
-                }
+                }*/
                 
 		g.dispose();
 		bs.show();

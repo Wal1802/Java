@@ -5,10 +5,12 @@
  */
 package CanvasItems;
 
+import Type.Conclusion;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Polygon;
 import java.awt.Rectangle;
+import java.text.AttributedCharacterIterator;
 
 /**
  *
@@ -16,13 +18,16 @@ import java.awt.Rectangle;
  */
 public class Triangle {
     public int xp[]= new int[5], yp[] = new int[5], sizef, x, y;
+    public Conclusion c;
     public double distX, distY;
-    final int size;
+    final int size, ID;
     public static float zoom;
     public boolean clicked=false;
+    static int id;
     
     static{
         zoom=1;
+        id=0;
     }
     String premisa, regla, conclusion;
     public Triangle( int x, int y,int size) {
@@ -31,9 +36,22 @@ public class Triangle {
         this.y = y;
         this.distX=0-x;
         this.distY=0-y;
-        
+        ID=id++;
         act();   
     }
+    
+    public Triangle( int x, int y,int size, Conclusion c) {
+        this.size = (int)(size * zoom);
+        this.c=c;
+        this.x = x;
+        this.y = y;
+        this.distX=0-x;
+        this.distY=0-y;
+        ID=id++;
+        act();   
+    }
+    
+    
     
     public void act(){
          this.sizef = (int)(size * zoom);
@@ -52,10 +70,12 @@ public class Triangle {
 
 
     public void draw(Graphics g) {
-        g.setColor(Color.red);
-        
-        
+        g.setColor(Color.BLACK);
          act();
+        g.drawString(""+ID, x, y);
+        g.setColor(Color.blue);        
+        g.drawString(c.getText(), xp[0], yp[0]+15);
+        g.setColor(Color.red);
         g.drawPolyline(xp, yp, 5);
 		//g.drawPolygon(new Triangle(40+i, 200+i, 100-i*2).polygon());
         g.setColor(Color.white);

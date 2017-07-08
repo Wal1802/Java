@@ -17,6 +17,14 @@ public class Conclusion extends basicType {
 		id=0;	
 	}
 	
+        public Conclusion( String text) {
+		super(4, text);
+		this.color = "#58FA5B";
+		this.type = Type.Premisa;
+		this.premisa = new ArrayList<Premisa>();
+		ID=++Conclusion.id;
+		this.indice= ""+ID;
+	}
 	//Conclusion
 	public Conclusion(int letterSize, String text) {
 		super(letterSize, text);

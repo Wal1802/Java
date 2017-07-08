@@ -2,6 +2,7 @@
 package Front;
 
 
+import Type.Conclusion;
 import java.awt.Color;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -29,17 +30,30 @@ public class MyEditText {
             doc = textPane.getStyledDocument();
           
     }
+    public void buttonCreate(){
+        Style style = textPane.addStyle(main.content._textEditor.getText(), null);
+            StyleConstants.setForeground(style, Color.white);
+            
+            try{
+                              
+                doc.insertString(0, " ", style);
+                main.content._textEditor.setText("");
+                main.content._textEditor.moveCaretPosition(1);
+                
+            }catch(Exception e){
+                
+            }
+    }
     
     public void buttonPremisa(){
             Style style = textPane.addStyle(main.content._textEditor.getSelectedText(), null);
             StyleConstants.setForeground(style, Color.green);
             
             try{
-                
-               
+                              
                 doc.insertString(main.content._textEditor.getSelectionStart(), main.content._textEditor.getSelectedText(), style);
                 doc.remove(main.content._textEditor.getSelectionStart(),main.content._textEditor.getSelectedText().length());
-               
+                
             }catch(Exception e){
                 
             }
@@ -62,8 +76,8 @@ public class MyEditText {
     }
     public void buttonConclusion(){
             Style style = textPane.addStyle(main.content._textEditor.getSelectedText(), null);
-            StyleConstants.setForeground(style, Color.blue);
-            
+            StyleConstants.setForeground(style, Color.cyan);
+            main.content._textEditor.add(new Conclusion(main.content._textEditor.getSelectedText()));
             try{
                 
                 System.out.println("i= "+ main.content._textEditor.getSelectedText().length());

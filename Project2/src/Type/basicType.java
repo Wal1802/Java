@@ -1,12 +1,12 @@
 package Type;
 
 public class basicType {
-	private int letterSize = 52; //Tamaño de la letra segun Ascii
-	private final int LETTER_MIN_SIZE = 52; //Tamaño minimo en Ascii (52 == 4)
+	private int letterSize = 52; //Tamaï¿½o de la letra segun Ascii
+	private final int LETTER_MIN_SIZE = 52; //Tamaï¿½o minimo en Ascii (52 == 4)
 	protected String color="White";
 	public String init="<font color=\""+color+"\" size=\""+(char)letterSize +"\">", end= "</font>";
-	protected String text;
-	protected Type type;
+	public String text;
+	public Type type;
 	protected int Start, End;
 	
 	

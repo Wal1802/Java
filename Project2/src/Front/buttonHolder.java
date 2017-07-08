@@ -4,11 +4,11 @@ import java.awt.Color;
 
 import javax.swing.JToolBar;
 
-import Button.Conclusion;
+import Button.bConclusion;
 import Button.Create;
 import Button.Open;
 import Button.Redo;
-import Button.Regla;
+import Button.bRegla;
 import Button.Save;
 import Button.Undo;
 import Button.bPremisa;
@@ -33,8 +33,8 @@ public class buttonHolder extends JToolBar {
 		this.add(new Undo());
 		this.add(new Redo());
 		this.add(new bPremisa(main));
-		this.add(new Regla(main));
-		this.add(new Conclusion(main));
+		this.add(new bRegla(main));
+		this.add(new bConclusion(main));
 		
 	}
 }

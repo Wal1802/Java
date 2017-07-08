@@ -1,5 +1,6 @@
 package Front;
 
+import Button.bRegla;
 import java.awt.Color;
 import java.util.ArrayList;
 
@@ -8,7 +9,9 @@ import javax.swing.JEditorPane;
 import Type.Conclusion;
 import Type.Premisa;
 import Type.Regla;
+import Type.Type;
 import Type.basicType;
+import java.awt.PopupMenu;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.util.Iterator;
@@ -19,29 +22,21 @@ import javax.swing.text.DefaultStyledDocument;
 public class textEditor extends JTextPane implements KeyListener{
         public Main main;
 	private static final long serialVersionUID = 6001669765747941266L;
-
-       // private ArrayList<String> text= new ArrayList<String>();
-        private String start = "<html><head></head><body color=\"white\">\n", end ="</body></html>";
-//mamalo
+       
+   
         
 
-	private ArrayList<basicType> argumento = new ArrayList<basicType>();
-	private Thread printHtml = new Thread(()->notClear());
-	
+	private ArrayList<basicType> unselected = new ArrayList<basicType>();
+        private ArrayList<basicType> argumentos = new ArrayList<basicType>();
+	private Thread printHtml = new Thread(()->notClear());	
 	
 	public textEditor(DefaultStyledDocument doc, Main main){
 		super();
                 this.main=main;
-		//text.add(0, start);
-                
-                //text.add(2, end);
 		this.setBackground(Color.DARK_GRAY);
-		//this.setContentType("text/html");
-               // this.setTextIterator();
 		this.setCaretColor(Color.WHITE);
 		this.setBounds(10, 42, 371, 366);
 		this.setEditable(false);
-                this.setText(start+new Premisa("hola").getHtml()+end);
 		printHtml.start();
 		
 	}
@@ -49,27 +44,7 @@ public class textEditor extends JTextPane implements KeyListener{
 	
 	// TODO agregar Premisa WIP
 	public void add(Premisa p){
-		argumento.add(p);
-		String buffer[], start[]= this.getText().split("<body color=\"white\">");
-		buffer=start[1].split(p.getText());
-		
-		int length =start[1].length();
-		int index= start[1].indexOf(p.getText());
-		
-		int cont = buffer[0].length();
-		System.out.println("Start[0]="+start[0]+" Index:"+index+" Length="+length+" Contador:"+cont);
-		int i= 0, max= buffer.length, Start=this.getSelectionStart();
-		this.setText(start[0]+"<body color=\"white\">");
-		while(cont<Start){
-			this.setText(this.getText()+buffer[i++]+p.getText());
-			cont+=buffer[i].length();
-		}
-		this.setText(this.getText()+buffer[i++]+p.getHtml());
-		while(i<max){
-			this.setText(this.getText()+buffer[i++]);
-		}
-		
-		
+		unselected.add(p);						
 	}
         
        /* public void setTextIterator(){
@@ -86,12 +61,24 @@ public class textEditor extends JTextPane implements KeyListener{
 	
 	// TODO agregar Regla WIP
 	public void add(Regla r){
-		argumento.add(r);
+		unselected.add(r);
 	}
 	
 	// TODO agregar conclusion WIP
 	public void add(Conclusion c){
-		argumento.add(c);
+            
+            while(!unselected.isEmpty()){
+                basicType temp= unselected.remove(0);
+                if(temp.type== Type.Premisa)
+                    c.add((Premisa)temp);
+                else
+                    if(temp.type== Type.Regla)
+                    c.add((Regla)temp);
+                }
+              
+		argumentos.add(c);
+                System.err.println("Test");
+                main.content.graph.addC(c);
 	}
         public boolean key =false;
 	private void notClear(){
@@ -134,6 +121,14 @@ public class textEditor extends JTextPane implements KeyListener{
                         }
                         System.err.println("False");
                     }
+
+    private static class Triangle extends PopupMenu {
+
+        public Triangle() {
+        }
+    }
+
+
 
     
 

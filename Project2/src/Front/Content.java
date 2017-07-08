@@ -19,7 +19,7 @@ public class Content extends JPanel {
        
        
 	public textEditor _textEditor;
-	public Graph game;
+	public Graph graph;
 	public Main main;
         public  JPanel panel;
 	public Content(Main main){
@@ -28,8 +28,8 @@ public class Content extends JPanel {
 		this.setBackground(Color.GRAY);
 		this.setBorder(null);		
 		this.setLayout(null);
-                game = new Graph(main);
-              //  game.start();
+                graph = new Graph(main);
+              
                 
                 
 		this.add(_textEditor = new textEditor(document, main));
@@ -42,7 +42,7 @@ public class Content extends JPanel {
                 
                
 		this.add(panel);
-                panel.add(game);
+                panel.add(graph);
                 panel.setVisible(false);
 		
 	}

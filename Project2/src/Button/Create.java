@@ -34,9 +34,10 @@ public class Create extends JButton {
 	}
         public void buttonPress(){
             System.out.println("Soy el boton de Create");
+            
             main.content.panel.setVisible(true);//
             main.content._textEditor.setVisible(true);// añadidas por walddry para cuando pulse el ctrl +n 
-            main.content.game.start();//
+            main.content.graph.start();//
             if ( main.content._textEditor.getText().toString().length() > 0){
                 main.setAlwaysOnTop(false);
                try{
@@ -62,7 +63,8 @@ public class Create extends JButton {
 
             }
 			
-                    
+            main.seleccion.buttonCreate();
+            main.content._textEditor.setText(" Premisa Regla Conslusion");
         }
 	
 }
