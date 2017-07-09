@@ -27,7 +27,6 @@ public class bConclusion extends JButton {
             public void mouseReleased(MouseEvent e){
                 main.seleccion.buttonConclusion();
                 main.content._textEditor.setEditable(false);
-
                 System.out.println("Soy el boton de Conclusion");				
             }
         });

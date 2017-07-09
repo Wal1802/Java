@@ -67,6 +67,11 @@ public class Triangle {
         this.conclusion=true;
     }
     
+    public void add(Regla r){
+        this.r=r;
+        this.regla=true;
+    }
+    
     //ACT LOS DATOS
     public void act(){
         this.sizef = (int)(SIZE * zoom);
@@ -98,6 +103,8 @@ public class Triangle {
             g.drawString("P "+tag, xp[0]+15, yp[0]+15);
         if(conclusion)
             g.drawString("C "+tag, xp[2]-10, yp[2]-15);
+        if(regla)
+            g.drawString("R "+tag, xp[1]-10, yp[1]-45);
         g.setColor(Color.red);
         g.drawPolyline(xp, yp, 5);
         //g.drawPolygon(new Triangle(40+i, 200+i, 100-i*2).polygon());

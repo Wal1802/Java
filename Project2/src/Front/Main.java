@@ -59,7 +59,7 @@ public class Main extends JFrame implements KeyListener {
         if(key){
             switch(e.getKeyCode()){    
                 case KeyEvent.VK_CONTROL: key=false; break;
-                case KeyEvent.VK_N: _buttonHolder.create.buttonPress();
+                case KeyEvent.VK_N: _buttonHolder.create.buttonPress(); break;
                 case KeyEvent.VK_P: this.seleccion.buttonPremisa();  break;
                 default: ;
             }

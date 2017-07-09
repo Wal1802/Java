@@ -22,6 +22,7 @@ public class Conclusion extends basicType {
         this.color = "#58FA5B";
         this.type = Type.Premisa;
         this.premisa = new ArrayList<Premisa>();
+        this.regla = new ArrayList<Regla>();
         ID=++Conclusion.id;
         this.indice= ""+ID;
     }
@@ -31,6 +32,7 @@ public class Conclusion extends basicType {
         this.color = "#58FA5B";
         this.type = Type.Premisa;
         this.premisa = new ArrayList<Premisa>();
+        this.regla = new ArrayList<Regla>();
         ID=++Conclusion.id;
         this.indice= ""+ID;
     }

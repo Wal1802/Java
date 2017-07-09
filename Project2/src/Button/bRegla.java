@@ -27,7 +27,7 @@ public class bRegla extends JButton {
                 main.seleccion.buttonRegla();
                 main.content._textEditor.setEditable(false);
                 System.out.println("Soy el boton de Regla");
-                main.content._textEditor.add(new Regla(main.content._textEditor.getSelectedText()));
+                //main.content._textEditor.add(new Regla(main.content._textEditor.getSelectedText()));
             }
         });
     }
