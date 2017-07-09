@@ -11,7 +11,7 @@ import Front.Main;
 import Type.Premisa;
 
 public class bPremisa extends JButton {
-
+            public Main main;
         
 	public bPremisa(Main main){
 		super();
