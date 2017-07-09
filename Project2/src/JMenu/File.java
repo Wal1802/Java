@@ -20,7 +20,7 @@ public class File extends JMenu {
     private Main main;
 
     public File(Main main){
-        super("File");
+        super("Archivo");
         this.main = main;
         this.NuevoArchivo = new NuevoArchivo();
         this.AbrirArchivo = new AbrirArchivo();

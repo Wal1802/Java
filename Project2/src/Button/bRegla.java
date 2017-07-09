@@ -13,7 +13,7 @@ import Type.Regla;
 public class bRegla extends JButton {
 
     private static final long serialVersionUID = -1162271566827801713L;
-    Main main;
+
     public bRegla(Main main){
         super();
         this.setToolTipText("Regla");
@@ -21,7 +21,6 @@ public class bRegla extends JButton {
         this.setForeground(Color.DARK_GRAY);
         this.setBorderPainted(false);
         this.setBorder(null);
-        this.main=main;
         this.setBackground(Color.DARK_GRAY);
         this.addMouseListener(new MouseAdapter() {
             public void mouseReleased(MouseEvent e){

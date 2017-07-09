@@ -20,6 +20,14 @@ public class buttonHolder extends JToolBar {
     public Main main;
     public Save save;
     public Create create;
+    public Open open;
+    public Redo redo;
+    public Undo undo;
+    public bConclusion conclusion;
+    public bPremisa premisa;
+    public bRegla regla;
+    
+    
     public buttonHolder(Main main){
         super();
         this.setBorder(null);
@@ -30,12 +38,12 @@ public class buttonHolder extends JToolBar {
         this.main=main;
         this.setPreferredSize(new Dimension(main.getWidth(), main.getHeight()));
         this.add(create = new Create(main));
-        this.add(new Open(main));
+        this.add(open = new Open(main));
         this.add(save=new Save(main));
-        this.add(new Undo());
-        this.add(new Redo());
-        this.add(new bPremisa(main));
-        this.add(new bRegla(main));
-        this.add(new bConclusion(main));
+        this.add(undo = new Undo());
+        this.add(redo = new Redo());
+        this.add(premisa = new bPremisa(main));
+        this.add(regla = new bRegla(main));
+        this.add(conclusion = new bConclusion(main));
     }
 }
