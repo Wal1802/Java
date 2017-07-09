@@ -41,7 +41,7 @@ public class MyEditText {
         Premisa p;
         Style style = textPane.addStyle(main.content._textEditor.getSelectedText(), null);
         StyleConstants.setForeground(style, Color.green);
-        main.content._textEditor.add(p=new Premisa(main.content._textEditor.getSelectedText()));
+        main.content._textEditor.add(p=new Premisa(main.content._textEditor.getSelectedText(), main.content._textEditor.getSelectionStart(), main.content._textEditor.getSelectionEnd()));
         main.content.graph.addP(p);
         try{
             doc.insertString(main.content._textEditor.getSelectionStart(), main.content._textEditor.getSelectedText(), style);
@@ -54,7 +54,7 @@ public class MyEditText {
         Regla r;
         Style style = textPane.addStyle(main.content._textEditor.getSelectedText(), null);
         StyleConstants.setForeground(style, Color.yellow);
-        main.content._textEditor.add(r=new Regla(main.content._textEditor.getSelectedText()));
+        main.content._textEditor.add(r=new Regla(main.content._textEditor.getSelectedText(), main.content._textEditor.getSelectionStart(), main.content._textEditor.getSelectionEnd()));
         main.content.graph.addR(r);
         try{
             System.out.println("i= "+ main.content._textEditor.getSelectedText().length());
@@ -71,7 +71,7 @@ public class MyEditText {
         Conclusion c;
         Style style = textPane.addStyle(main.content._textEditor.getSelectedText(), null);
         StyleConstants.setForeground(style, Color.cyan);
-        main.content._textEditor.add(c=new Conclusion(main.content._textEditor.getSelectedText()));
+        main.content._textEditor.add(c=new Conclusion(main.content._textEditor.getSelectedText(), main.content._textEditor.getSelectionStart(), main.content._textEditor.getSelectionEnd()));
         main.content.graph.addC(c);
         try{
             System.out.println("i= "+ main.content._textEditor.getSelectedText().length());

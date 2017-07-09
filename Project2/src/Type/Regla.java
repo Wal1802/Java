@@ -17,8 +17,8 @@ public class Regla extends basicType {
             id=0;	
     }
     //Premisa directa
-    public Regla( String text) {
-        super(4, text);
+    public Regla( String text, int start, int end) {
+        super(4, text, start, end);
         this.color = "#F7FE2E";
         this.type = Type.Regla;
         //this.premisaApoyo = new ArrayList<Regla>();
@@ -28,16 +28,7 @@ public class Regla extends basicType {
         //father = null;
     }
     //Premisa directa
-    public Regla(int letterSize, String text) {
-        super(letterSize, text);
-        this.color = "#F7FE2E";
-        this.type = Type.Regla;
-        //this.premisaApoyo = new ArrayList<Regla>();
-        ID=++id;
-        this.indice= ""+ID;
-        //this.subIndice= 0;
-        //father = null;
-    }
+
 
     public String getIndice() {
             return indice;

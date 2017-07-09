@@ -4,23 +4,26 @@ public class basicType {
     private int letterSize = 52; //Tama�o de la letra segun Ascii
     private final int LETTER_MIN_SIZE = 52; //Tama�o minimo en Ascii (52 == 4)
     protected String color="White";
-    public String init="<font color=\""+color+"\" size=\""+(char)letterSize +"\">", end= "</font>";
     public String text;
     public Type type;
-    protected int Start, End;
+    public int start, end;
 
 
 
-    public basicType(int letterSize, String text) {
+    public basicType(int letterSize, String text, int start, int end) {
         super();
+        this.end=end;
+        this.start=start;
         this.letterSize = letterSize;
         this.text = text;
         this.type= Type.Basic;
     }
-    public basicType(String text) {
+    public basicType(String text, int start, int end) {
         super();
         this.text = text;
         this.type= Type.Basic;
+        this.end=end;
+        this.start=start;
     }
 
     public void setSize(int Size){
@@ -29,15 +32,6 @@ public class basicType {
         else
             this.letterSize=Size;
     }	
-
-
-    public int getStart() {
-        return Start;
-    }
-
-    public int getEnd() {
-        return End;
-    }
 
     public Type getType() {
         return type;
@@ -60,8 +54,4 @@ public class basicType {
         this.text = text;
     }
 
-    public String getHtml(){
-        init="<font color=\""+color+"\" size=\""+(char)letterSize +"\">"; end= "</font>";
-        return init+text+end;
-    }
 }

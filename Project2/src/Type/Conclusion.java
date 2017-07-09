@@ -14,11 +14,11 @@ public class Conclusion extends basicType {
 
     // ID estatica para llevar control de la cantidad de premisas directas
     static{
-        id=0;	
+        id=1;	
     }
 
-    public Conclusion( String text) {
-        super(4, text);
+    public Conclusion( String text, int start, int end) {
+        super(4, text,  start,  end);
         this.color = "#58FA5B";
         this.type = Type.Premisa;
         this.premisa = new ArrayList<Premisa>();
@@ -27,8 +27,8 @@ public class Conclusion extends basicType {
         this.indice= ""+ID;
     }
     //Conclusion
-    public Conclusion(int letterSize, String text) {
-        super(letterSize, text);
+    public Conclusion(int letterSize, String text, int start, int end) {
+        super(letterSize, text,  start,  end);
         this.color = "#58FA5B";
         this.type = Type.Premisa;
         this.premisa = new ArrayList<Premisa>();

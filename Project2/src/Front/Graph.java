@@ -138,6 +138,16 @@ public class Graph extends Canvas implements Runnable{
     }
 
     public void addC(Conclusion c){
+        this.triangle.forEach(new Consumer() {
+            @Override
+            public void accept(Object t) {
+                Triangle temp = (Triangle)t;
+                
+                if(temp.c!=null && c.text.equals(temp.c.text)){
+                    System.err.println("Argumento Paralelo");
+                }
+            }
+        });
         if(open){
             this.triangle.get(triangle.size()-1).add(c);
             this.open=false;
@@ -154,7 +164,7 @@ public class Graph extends Canvas implements Runnable{
            Triangle temp=new Triangle(50,50,100, TypeTriangle.Subordinado);
            this.triangle.add(temp);    
            temp.add(p);
-           //temp.father=
+           
         }
         else{
             open=true;

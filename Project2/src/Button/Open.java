@@ -65,18 +65,18 @@ public class Open extends JButton {
                         basicType b ;
                       if(path.contains(".doc")){ 
                           parseDoc(path); 
-                          b= new basicType(text);
-                          main.content._textEditor.setText( b.getHtml() );
+                          //b= new basicType(text);
+                          main.content._textEditor.setText(text );
                                                 }
                       if(path.contains(".docx")){ 
                           parseDocx(path);
-                          b= new basicType(text);
-                          main.content._textEditor.setText( b.getHtml() );
+                          //b= new basicType(text);
+                          main.content._textEditor.setText( text );
                       }
 
                      if(path.contains(".txt")){ 
-                         b= new basicType(contenido); 
-                         main.content._textEditor.setText("<html><head></head><body color=\"white\">"+b.getText()+"</body></html>");          
+                         //b= new basicType(contenido); 
+                         main.content._textEditor.setText(contenido);          
 
                      }
                         //En el editor de texto colocamos su contenido

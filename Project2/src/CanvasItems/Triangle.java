@@ -52,6 +52,7 @@ public class Triangle {
         ID=id++;
         this.type=type;
         tag= ""+ID;
+        
             
         act();   
     }
