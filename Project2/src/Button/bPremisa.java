@@ -12,6 +12,7 @@ import Type.Premisa;
 
 public class bPremisa extends JButton {
 
+
     private static final long serialVersionUID = -1162271566827801713L;
     public Main main;
 
@@ -34,5 +35,7 @@ public class bPremisa extends JButton {
             }
         });
     }
+
+
 	
 }

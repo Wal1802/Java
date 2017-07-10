@@ -5,6 +5,7 @@ import java.awt.Color;
 import javax.swing.JMenuBar;
 
 import JMenu.File;
+import JMenu.Opciones;
 
 public class menuBar extends JMenuBar {
 
@@ -15,5 +16,6 @@ public class menuBar extends JMenuBar {
         this.setForeground(Color.GRAY);
         this.setBackground(Color.WHITE);
         this.add(new File(main));
+        this.add(new Opciones(main));
     }
 }

@@ -20,12 +20,14 @@ public class buttonHolder extends JToolBar {
     public Main main;
     public Save save;
     public Create create;
+
     public bRegla regla;
     public bPremisa premisa;
     public bConclusion conclusion;
     public Redo redo;
     public Undo undo;
     public Open open;
+
     public buttonHolder(Main main){
         super();
         this.addKeyListener(main);
