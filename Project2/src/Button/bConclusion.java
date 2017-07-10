@@ -17,6 +17,7 @@ public class bConclusion extends JButton {
     public Main main;
     public bConclusion(Main main){
         super();
+        this.addKeyListener(main);
         this.setToolTipText("Conclusion");
         this.setIcon(new ImageIcon(Main.class.getResource("/Icon/Conclusion.png")));
         this.setForeground(Color.DARK_GRAY);

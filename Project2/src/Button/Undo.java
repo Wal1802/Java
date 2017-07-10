@@ -12,9 +12,11 @@ import Front.Main;
 public class Undo extends JButton {
 
     private static final long serialVersionUID = -1162271566827801713L;
-
-    public Undo(){
+    public Main main;
+    public Undo(Main main){
         super();
+        this.main=main;
+        this.addKeyListener(main);
         this.setToolTipText("Undo");
         this.setIcon(new ImageIcon(Main.class.getResource("/Icon/Undo.png")));
         this.setForeground(Color.DARK_GRAY);

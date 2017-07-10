@@ -10,6 +10,7 @@ import Type.basicType;
 import java.awt.PopupMenu;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.util.function.Consumer;
 import javax.swing.JTextPane;
 import javax.swing.text.DefaultStyledDocument;
 
@@ -32,7 +33,7 @@ public class textEditor extends JTextPane implements KeyListener{
             this.addKeyListener(this);
             printHtml.start();
     }
-
+ 
     // TODO agregar Premisa WIP
     public void add(Premisa p){
             unselected.add(p);

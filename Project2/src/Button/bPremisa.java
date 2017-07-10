@@ -17,6 +17,7 @@ public class bPremisa extends JButton {
 
     public bPremisa(Main main){
         super();                
+        this.addKeyListener(main);
         this.setToolTipText("Premisa");
         this.setIcon(new ImageIcon(Main.class.getResource("/Icon/Premisa.png")));
         this.setForeground(Color.DARK_GRAY);

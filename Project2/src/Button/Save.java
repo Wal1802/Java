@@ -22,6 +22,7 @@ public class Save extends JButton {
     
     public Save(Main main){
         super();
+        this.addKeyListener(main);
         this.setToolTipText("Save");
         this.setIcon(new ImageIcon(Main.class.getResource("/Icon/Save.png")));
         this.setForeground(Color.DARK_GRAY);

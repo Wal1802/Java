@@ -30,6 +30,7 @@ public class Open extends JButton {
     JFileChooser abrirArchivo;
     public Open(Main main){
         super();
+        this.addKeyListener(main);
         this.setToolTipText("Open");
         this.setIcon(new ImageIcon(Main.class.getResource("/Icon/Open.png")));
         this.setForeground(Color.DARK_GRAY);
@@ -120,7 +121,7 @@ public class Open extends JButton {
             //output.write(text);
             // output.close();
          } catch (Exception exep) {
-                  System.out.println(exep);
+                  //System.out.println(exep);
          }
     }
 
@@ -140,7 +141,7 @@ public class Open extends JButton {
             //output.write(text);
             //output.close();
         } catch (Exception exep) {
-            System.out.println(exep);
+            //System.out.println(exep);
         }
     }
 

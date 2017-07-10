@@ -16,6 +16,7 @@ public class bRegla extends JButton {
 
     public bRegla(Main main){
         super();
+        this.addKeyListener(main);
         this.setToolTipText("Regla");
         this.setIcon(new ImageIcon(Main.class.getResource("/Icon/Regla.png")));
         this.setForeground(Color.DARK_GRAY);

@@ -2,6 +2,7 @@ package Front;
 
 
 import CanvasItems.Triangle;
+import CanvasItems.TriangleParalel;
 import CanvasItems.TypeTriangle;
 import Type.Conclusion;
 import Type.Premisa;
@@ -37,19 +38,31 @@ public class Graph extends Canvas implements Runnable{
     private int cont =0;
     private boolean clickOnTriangle=false, clicked = false;
     private int clickedTriangle;
-    
+        Triangle a, b;
     public Graph(Main main){
 
         this.main=main;
         this.setVisible(true);
         this.setBounds(0, 0, 500, 500);
-
+        this.addKeyListener(main);
+        
         this.addMouseWheelListener(new MouseWheelListener() {
             @Override
             public void mouseWheelMoved(MouseWheelEvent e) {
-                System.err.println(e.getWheelRotation());
+                //System.err.println(e.getWheelRotation());
                 Iterator i =triangle.iterator();
+                
+                    
                 while(i.hasNext()){
+                    if(main.key && clicked){
+                        Triangle auxT=(Triangle)i.next();
+                        if(auxT.hitbox().contains(e.getPoint())){                                                        
+                            //System.err.println("Click triangle "+ j);
+                            
+                            auxT.sizef+= e.getWheelRotation();
+                            break;
+                        }
+                    }else
                     ((Triangle)i.next()).zoom +=0.01*e.getWheelRotation();
                      }
             }
@@ -57,7 +70,7 @@ public class Graph extends Canvas implements Runnable{
         this.addMouseMotionListener(new MouseMotionListener() {
             @Override
             public void mouseDragged(MouseEvent e) {
-
+                int xset=0, yset=0;
                 if(!clicked){
                     clicked=true;
                  Triangle auxT=null;
@@ -66,7 +79,9 @@ public class Graph extends Canvas implements Runnable{
                     while(i.hasNext()){
                         auxT=(Triangle)i.next();
                         if(auxT.hitbox().contains(e.getPoint())){                                                        
-                            System.err.println("Click triangle "+ j);
+                            //System.err.println("Click triangle "+ j);
+                            xset=auxT.x-e.getX();
+                            yset=auxT.y-e.getY();
                             auxT.clicked=true;
                             clickOnTriangle=true;
                             clickedTriangle=j;
@@ -79,8 +94,8 @@ public class Graph extends Canvas implements Runnable{
 
                    if(move.clicked){
 
-                    move.distX=-1*e.getX();
-                    move.distY=-1*e.getY();
+                    move.distX=(-1*e.getX()-xset);
+                    move.distY=(-1*e.getY()-yset);
                 }
                    else{
                        move.clicked=false;
@@ -106,11 +121,11 @@ public class Graph extends Canvas implements Runnable{
                 if(cont<3 && clickOnTriangle==false){
                     //riangle.add(new Triangle(e.getX(), e.getY(), 40));
                 clickOnTriangle=true;
-                System.err.println(e.getX()+", "+ e.getY()+", "+ 40+", "+ refX+", "+refY);
+                //System.err.println(e.getX()+", "+ e.getY()+", "+ 40+", "+ refX+", "+refY);
                 cont++;
 
                 }
-                System.err.println("Mouse Release");
+                //System.err.println("Mouse Release");
                 
                 move.clicked=false;
                 clicked=false;
@@ -134,6 +149,7 @@ public class Graph extends Canvas implements Runnable{
             //windown=new Main();
             //windown.content.add(this);
         this.triangle= new ArrayList<Triangle>();
+           
 
     }
 
@@ -155,7 +171,7 @@ public class Graph extends Canvas implements Runnable{
         }
         else{
             this.triangle.add(new Triangle(50,50,100, TypeTriangle.Basic));   
-            System.err.println(triangle.size());
+            //System.err.println(triangle.size());
         }
     }
 
@@ -171,7 +187,22 @@ public class Graph extends Canvas implements Runnable{
             Triangle temp=new Triangle(50,50,100, TypeTriangle.Basic);
             temp.add(p);
             this.triangle.add(temp);   
-            System.err.println(triangle.size());
+            //System.err.println(triangle.size());
+        }
+    }
+    public void addP(Premisa p, Triangle father){
+        if(open){
+           Triangle temp=new Triangle(father);
+           this.triangle.add(temp);    
+           temp.add(p);
+           
+        }
+        else{
+            open=true;
+            Triangle temp=new Triangle(50,50,100, TypeTriangle.Basic);
+            temp.add(p);
+            this.triangle.add(temp);   
+            //System.err.println(triangle.size());
         }
     }
     
@@ -184,7 +215,7 @@ public class Graph extends Canvas implements Runnable{
             Triangle temp=new Triangle(50,50,100, TypeTriangle.Basic);
             temp.add(r);
             this.triangle.add(temp);   
-            System.err.println(triangle.size());
+            //System.err.println(triangle.size());
         }
     }
 

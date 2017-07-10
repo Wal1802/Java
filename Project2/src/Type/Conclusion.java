@@ -7,8 +7,8 @@ public class Conclusion extends basicType {
     private static int id;	// ID para conclusiones
     private final int ID;	// ID en general de una conclusion
     private String indice;	// Ejemplo: C1
-    private ArrayList<Premisa> premisa;	//Arreglo de premisas que apoyan esta conclusion
-    private ArrayList<Regla> regla;	//Arreglo de premisas que apoyan esta conclusion
+    public ArrayList<Premisa> premisa;	//Arreglo de premisas que apoyan esta conclusion
+    public ArrayList<Regla> regla;	//Arreglo de premisas que apoyan esta conclusion
 
     private boolean debug = false;	// Modo Debug
 
