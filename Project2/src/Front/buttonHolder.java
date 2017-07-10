@@ -20,16 +20,17 @@ public class buttonHolder extends JToolBar {
     public Main main;
     public Save save;
     public Create create;
-    public Open open;
+
+    public bRegla regla;
+    public bPremisa premisa;
+    public bConclusion conclusion;
     public Redo redo;
     public Undo undo;
-    public bConclusion conclusion;
-    public bPremisa premisa;
-    public bRegla regla;
-    
-    
+    public Open open;
+
     public buttonHolder(Main main){
         super();
+        this.addKeyListener(main);
         this.setBorder(null);
         this.setFloatable(false);
         this.setBackground(Color.DARK_GRAY);
@@ -38,12 +39,12 @@ public class buttonHolder extends JToolBar {
         this.main=main;
         this.setPreferredSize(new Dimension(main.getWidth(), main.getHeight()));
         this.add(create = new Create(main));
-        this.add(open = new Open(main));
+        this.add(open =new Open(main));
         this.add(save=new Save(main));
-        this.add(undo = new Undo());
-        this.add(redo = new Redo());
-        this.add(premisa = new bPremisa(main));
-        this.add(regla = new bRegla(main));
-        this.add(conclusion = new bConclusion(main));
+        this.add(undo=new Undo(main));
+        this.add(redo=new Redo(main));
+        this.add(premisa=new bPremisa(main));
+        this.add(regla=new bRegla(main));
+        this.add(conclusion=new bConclusion(main));
     }
 }

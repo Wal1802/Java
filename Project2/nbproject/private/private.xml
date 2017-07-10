@@ -4,19 +4,11 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
             <file>file:/C:/Users/OACS/Documents/Programs/Java/Project2/src/Front/Graph.java</file>
-            <file>file:/C:/Users/OACS/Documents/Programs/Java/Project2/src/Front/Main.java</file>
             <file>file:/C:/Users/OACS/Documents/Programs/Java/Project2/src/CanvasItems/Triangle.java</file>
-            <file>file:/C:/Users/OACS/Documents/Programs/Java/Project2/src/Button/bPremisa.java</file>
-            <file>file:/C:/Users/OACS/Documents/Programs/Java/Project2/src/Type/basicType.java</file>
-            <file>file:/C:/Users/OACS/Documents/Programs/Java/Project2/src/Type/Type.java</file>
-            <file>file:/C:/Users/OACS/Documents/Programs/Java/Project2/src/Front/shortCuts.java</file>
-            <file>file:/C:/Users/OACS/Documents/Programs/Java/Project2/src/Button/bConclusion.java</file>
-            <file>file:/C:/Users/OACS/Documents/Programs/Java/Project2/src/Type/Conclusion.java</file>
-            <file>file:/C:/Users/OACS/Documents/Programs/Java/Project2/src/Button/bRegla.java</file>
-            <file>file:/C:/Users/OACS/Documents/Programs/Java/Project2/src/Button/Create.java</file>
+            <file>file:/C:/Users/OACS/Documents/Programs/Java/Project2/src/Front/Main.java</file>
+            <file>file:/C:/Users/OACS/Documents/Programs/Java/Project2/src/CanvasItems/TriangleParalel.java</file>
             <file>file:/C:/Users/OACS/Documents/Programs/Java/Project2/src/Front/MyEditText.java</file>
-            <file>file:/C:/Users/OACS/Documents/Programs/Java/Project2/src/Front/textEditor.java</file>
-            <file>file:/C:/Users/OACS/Documents/Programs/Java/Project2/src/Front/Content.java</file>
+            <file>file:/C:/Users/OACS/Documents/Programs/Java/Project2/src/Button/Create.java</file>
         </group>
     </open-files>
 </project-private>

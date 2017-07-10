@@ -18,8 +18,8 @@ public class Premisa extends basicType {
     }
 
     //Premisa directa
-    public Premisa(int letterSize, String text) {
-        super(letterSize, text);
+    public Premisa(int letterSize, String text, int start, int end) {
+        super(letterSize, text, start, end);
         this.color = "#58FA5B";
         this.type = Type.Premisa;
         this.premisaApoyo = new ArrayList<Premisa>();
@@ -28,8 +28,8 @@ public class Premisa extends basicType {
         this.subIndice= 0;
         father = null;
     }
-    public Premisa( String text) {
-        super( text);
+    public Premisa( String text, int start, int end) {
+        super( text,  start,  end);
         this.color = "#58FA5B";
         this.type = Type.Premisa;
         this.premisaApoyo = new ArrayList<Premisa>();
@@ -40,17 +40,6 @@ public class Premisa extends basicType {
     }
 
 
-    //Premisa directa que apoya a otra premisa
-    public Premisa(int letterSize, String text, Premisa father) {
-        super(letterSize, text);
-        this.color = "#58FA5B";
-        this.type = Type.Premisa;
-        this.premisaApoyo = new ArrayList<Premisa>();
-        this.ID = ++this.father.subIndice;
-        this.indice = father.ID + "."+ this.ID ;
-        this.subIndice = 0;
-        this.father = father;
-    }
 
 
 

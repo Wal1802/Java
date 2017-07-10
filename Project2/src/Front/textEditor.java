@@ -10,6 +10,7 @@ import Type.basicType;
 import java.awt.PopupMenu;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.util.function.Consumer;
 import javax.swing.JTextPane;
 import javax.swing.text.DefaultStyledDocument;
 
@@ -32,11 +33,11 @@ public class textEditor extends JTextPane implements KeyListener{
             this.addKeyListener(this);
             printHtml.start();
     }
-
+ 
     // TODO agregar Premisa WIP
     public void add(Premisa p){
             unselected.add(p);
-            main.content.graph.addP(p);
+            
     }
 
    /* public void setTextIterator(){
@@ -58,19 +59,20 @@ public class textEditor extends JTextPane implements KeyListener{
 
     // TODO agregar conclusion WIP
     public void add(Conclusion c){
-
+    basicType temp;
         while(!unselected.isEmpty()){
-            basicType temp= unselected.remove(0);
+            
+            temp= unselected.remove(0);
+            System.err.println(temp.text);
             if(temp.type== Type.Premisa)
                 c.add((Premisa)temp);
             else
-                if(temp.type== Type.Regla)
                 c.add((Regla)temp);
         }
 
         argumentos.add(c);
         System.err.println("Test");
-        main.content.graph.addC(c);
+        
     }
 
     public boolean key =false;
@@ -107,7 +109,7 @@ public class textEditor extends JTextPane implements KeyListener{
         if(key){
             switch(e.getKeyCode()){    
                 case KeyEvent.VK_CONTROL: key=false; break;
-                case KeyEvent.VK_N: main._buttonHolder.create.buttonPress();
+                case KeyEvent.VK_N: main._buttonHolder.create.buttonPress(); break;
                 case KeyEvent.VK_P: main.seleccion.buttonPremisa();  break;
                 default: ;
             }

@@ -15,6 +15,7 @@ public class Create extends JButton {
 
     public Create(Main main){
         super();
+        this.addKeyListener(main);
         this.setToolTipText("Create");
         this.setIcon(new ImageIcon(Main.class.getResource("/Icon/Create.png")));
         this.setForeground(Color.DARK_GRAY);
@@ -31,7 +32,7 @@ public class Create extends JButton {
 
     }
     public void buttonPress(){
-        System.out.println("Soy el boton de Create");
+       // System.out.println("Soy el boton de Create");
 
         main.content.panel.setVisible(true);//
         main.content._textEditor.setVisible(true);// añadidas por walddry para cuando pulse el ctrl +n 
@@ -43,13 +44,13 @@ public class Create extends JButton {
                  int op = JOptionPane.showConfirmDialog(null, "Se perdera el progreso, ¿Desea guardar?", "Confirmar salida", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
                  if (op == JOptionPane.YES_OPTION){
                      main._buttonHolder.save.save();
-                     System.err.println("Limpiame");
+                     //System.err.println("Limpiame");
                  }
                  else{
 
                  }
             }catch(Exception ee){
-                System.out.println();
+                //System.out.println();
             }                                
             main.content._textEditor.setEditable(true);
             main.seleccion.buttonCreate();
@@ -65,7 +66,7 @@ public class Create extends JButton {
         }
 
         main.seleccion.buttonCreate();
-        main.content._textEditor.setText(" Premisa Regla Conslusion");
+        main.content._textEditor.setText("Premisa Regla Conslusion\nPremisa Regla");
     }
 	
 }

@@ -30,6 +30,7 @@ public class Open extends JButton {
     JFileChooser abrirArchivo;
     public Open(Main main){
         super();
+        this.addKeyListener(main);
         this.setToolTipText("Open");
         this.setIcon(new ImageIcon(Main.class.getResource("/Icon/Open.png")));
         this.setForeground(Color.DARK_GRAY);
@@ -65,18 +66,18 @@ public class Open extends JButton {
                         basicType b ;
                       if(path.contains(".doc")){ 
                           parseDoc(path); 
-                          b= new basicType(text);
-                          main.content._textEditor.setText( b.getHtml() );
+                          //b= new basicType(text);
+                          main.content._textEditor.setText(text );
                                                 }
                       if(path.contains(".docx")){ 
                           parseDocx(path);
-                          b= new basicType(text);
-                          main.content._textEditor.setText( b.getHtml() );
+                          //b= new basicType(text);
+                          main.content._textEditor.setText( text );
                       }
 
                      if(path.contains(".txt")){ 
-                         b= new basicType(contenido); 
-                         main.content._textEditor.setText("<html><head></head><body color=\"white\">"+b.getText()+"</body></html>");          
+                         //b= new basicType(contenido); 
+                         main.content._textEditor.setText(contenido);          
 
                      }
                         //En el editor de texto colocamos su contenido
@@ -120,7 +121,7 @@ public class Open extends JButton {
             //output.write(text);
             // output.close();
          } catch (Exception exep) {
-                  System.out.println(exep);
+                  //System.out.println(exep);
          }
     }
 
@@ -140,7 +141,7 @@ public class Open extends JButton {
             //output.write(text);
             //output.close();
         } catch (Exception exep) {
-            System.out.println(exep);
+            //System.out.println(exep);
         }
     }
 

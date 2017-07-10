@@ -14,7 +14,7 @@ public class Main extends JFrame implements KeyListener {
     public Content content;
     public buttonHolder _buttonHolder;
     public MyEditText seleccion;
-    private boolean key=false;
+    public boolean key=false;
     public Main(){
         setIconImage(Toolkit.getDefaultToolkit().getImage(Main.class.getResource("/Icon/Logo.png")));
         setTitle("Arguments Helper");
@@ -46,7 +46,7 @@ public class Main extends JFrame implements KeyListener {
 
     @Override
     public void keyPressed(KeyEvent e) {
-        System.err.println("True");
+        //System.err.println("True");
         switch(e.getKeyCode()){
             case KeyEvent.VK_CONTROL: key=true; break;
             default: ;
@@ -58,14 +58,16 @@ public class Main extends JFrame implements KeyListener {
     public void keyReleased(KeyEvent e) {
         if(key){
             switch(e.getKeyCode()){    
-                case KeyEvent.VK_CONTROL: key=false; break;
-                case KeyEvent.VK_N: _buttonHolder.create.buttonPress();
+                case KeyEvent.VK_CONTROL: key=false;
+                case KeyEvent.VK_N: _buttonHolder.create.buttonPress(); break;
                 case KeyEvent.VK_P: this.seleccion.buttonPremisa();  break;
+                case KeyEvent.VK_K: this.seleccion.buttonConclusion();  break;
+                case KeyEvent.VK_R: this.seleccion.buttonRegla();  break;
                 default: ;
             }
-            System.err.println("True");
+            //System.err.println("True");
         }
-        System.err.println("False");
+        //System.err.println("False");
     }
                                 
 }

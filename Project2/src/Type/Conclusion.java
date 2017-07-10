@@ -7,30 +7,32 @@ public class Conclusion extends basicType {
     private static int id;	// ID para conclusiones
     private final int ID;	// ID en general de una conclusion
     private String indice;	// Ejemplo: C1
-    private ArrayList<Premisa> premisa;	//Arreglo de premisas que apoyan esta conclusion
-    private ArrayList<Regla> regla;	//Arreglo de premisas que apoyan esta conclusion
+    public ArrayList<Premisa> premisa;	//Arreglo de premisas que apoyan esta conclusion
+    public ArrayList<Regla> regla;	//Arreglo de premisas que apoyan esta conclusion
 
     private boolean debug = false;	// Modo Debug
 
     // ID estatica para llevar control de la cantidad de premisas directas
     static{
-        id=0;	
+        id=1;	
     }
 
-    public Conclusion( String text) {
-        super(4, text);
+    public Conclusion( String text, int start, int end) {
+        super(4, text,  start,  end);
         this.color = "#58FA5B";
         this.type = Type.Premisa;
         this.premisa = new ArrayList<Premisa>();
+        this.regla = new ArrayList<Regla>();
         ID=++Conclusion.id;
         this.indice= ""+ID;
     }
     //Conclusion
-    public Conclusion(int letterSize, String text) {
-        super(letterSize, text);
+    public Conclusion(int letterSize, String text, int start, int end) {
+        super(letterSize, text,  start,  end);
         this.color = "#58FA5B";
         this.type = Type.Premisa;
         this.premisa = new ArrayList<Premisa>();
+        this.regla = new ArrayList<Regla>();
         ID=++Conclusion.id;
         this.indice= ""+ID;
     }

@@ -2,9 +2,11 @@ package Front;
 
 
 import CanvasItems.Triangle;
+import CanvasItems.TriangleParalel;
 import CanvasItems.TypeTriangle;
 import Type.Conclusion;
 import Type.Premisa;
+import Type.Regla;
 import java.awt.Canvas;
 import java.awt.Color;
 import java.awt.Graphics;
@@ -29,33 +31,46 @@ public class Graph extends Canvas implements Runnable{
     private Main main;
     private MouseListener m;
     private int size =40;
-    public ArrayList<Triangle> triangle = new ArrayList<Triangle>();
+    public ArrayList<Triangle> triangle;
     private boolean open=false;
-    private Triangle t=new Triangle(0,0,1, TypeTriangle.Basic), move=t;
+    private Triangle move;
     private int refX=0, refY=0;
     private int cont =0;
     private boolean clickOnTriangle=false, clicked = false;
     private int clickedTriangle;
+        Triangle a, b;
     public Graph(Main main){
 
         this.main=main;
         this.setVisible(true);
         this.setBounds(0, 0, 500, 500);
-
+        this.addKeyListener(main);
+        
         this.addMouseWheelListener(new MouseWheelListener() {
             @Override
             public void mouseWheelMoved(MouseWheelEvent e) {
-                System.err.println(e.getWheelRotation());
+                //System.err.println(e.getWheelRotation());
                 Iterator i =triangle.iterator();
+                
+                    
                 while(i.hasNext()){
+                    if(main.key && clicked){
+                        Triangle auxT=(Triangle)i.next();
+                        if(auxT.hitbox().contains(e.getPoint())){                                                        
+                            //System.err.println("Click triangle "+ j);
+                            
+                            auxT.sizef+= e.getWheelRotation();
+                            break;
+                        }
+                    }else
                     ((Triangle)i.next()).zoom +=0.01*e.getWheelRotation();
-                    System.err.println(t.zoom); }
+                     }
             }
         });
         this.addMouseMotionListener(new MouseMotionListener() {
             @Override
             public void mouseDragged(MouseEvent e) {
-
+                int xset=0, yset=0;
                 if(!clicked){
                     clicked=true;
                  Triangle auxT=null;
@@ -64,7 +79,9 @@ public class Graph extends Canvas implements Runnable{
                     while(i.hasNext()){
                         auxT=(Triangle)i.next();
                         if(auxT.hitbox().contains(e.getPoint())){                                                        
-                            System.err.println("Click triangle "+ j);
+                            //System.err.println("Click triangle "+ j);
+                            xset=auxT.x-e.getX();
+                            yset=auxT.y-e.getY();
                             auxT.clicked=true;
                             clickOnTriangle=true;
                             clickedTriangle=j;
@@ -75,10 +92,10 @@ public class Graph extends Canvas implements Runnable{
                 }
 
 
-                   if(move!=t && move.clicked){
+                   if(move.clicked){
 
-                    move.distX=-1*e.getX();
-                    move.distY=-1*e.getY();
+                    move.distX=(-1*e.getX()-xset);
+                    move.distY=(-1*e.getY()-yset);
                 }
                    else{
                        move.clicked=false;
@@ -95,29 +112,21 @@ public class Graph extends Canvas implements Runnable{
         });
         this.addMouseListener(m=new MouseListener() {
             @Override
-            public void mouseClicked(MouseEvent e) {
-
-              //clicked=true;
-            }
-
+            public void mouseClicked(MouseEvent e) {}
             @Override
-            public void mousePressed(MouseEvent e) {
-
-
-
-            }
+            public void mousePressed(MouseEvent e) {}
 
             @Override
             public void mouseReleased(MouseEvent e) {
                 if(cont<3 && clickOnTriangle==false){
                     //riangle.add(new Triangle(e.getX(), e.getY(), 40));
                 clickOnTriangle=true;
-                System.err.println(e.getX()+", "+ e.getY()+", "+ 40+", "+ refX+", "+refY);
+                //System.err.println(e.getX()+", "+ e.getY()+", "+ 40+", "+ refX+", "+refY);
                 cont++;
 
                 }
-                System.err.println("Mouse Release");
-                move=t;
+                //System.err.println("Mouse Release");
+                
                 move.clicked=false;
                 clicked=false;
                 clickOnTriangle=false;
@@ -139,32 +148,75 @@ public class Graph extends Canvas implements Runnable{
             //this.setBounds(10, 400, 50,50);
             //windown=new Main();
             //windown.content.add(this);
-
+        this.triangle= new ArrayList<Triangle>();
+           
 
     }
 
     public void addC(Conclusion c){
+        this.triangle.forEach(new Consumer() {
+            @Override
+            public void accept(Object t) {
+                Triangle temp = (Triangle)t;
+                
+                if(temp.c!=null && c.text.equals(temp.c.text)){
+                    System.err.println("Argumento Paralelo");
+                }
+            }
+        });
         if(open){
             this.triangle.get(triangle.size()-1).add(c);
             this.open=false;
+            return;
         }
         else{
             this.triangle.add(new Triangle(50,50,100, TypeTriangle.Basic));   
-            System.err.println(triangle.size());
+            //System.err.println(triangle.size());
         }
     }
 
     public void addP(Premisa p){
         if(open){
-           Triangle temp=new Triangle(50,50,100, TypeTriangle.Basic);
-           this.triangle.add(temp);    
+           this.triangle.get(triangle.size()-1).add(p);
+           
         }
         else{
             open=true;
             Triangle temp=new Triangle(50,50,100, TypeTriangle.Basic);
             temp.add(p);
             this.triangle.add(temp);   
-            System.err.println(triangle.size());
+            //System.err.println(triangle.size());
+        }
+    }
+    public void addP(Premisa p, Triangle father){
+        if(open){
+           Regla r = this.triangle.get(triangle.size()-1).r;
+           this.triangle.remove(triangle.size()-1);
+           Triangle temp=new Triangle(father);
+           this.triangle.add(temp);    
+           temp.add(p);
+           temp.add(r);
+           
+        }
+        else{
+            open=true;
+            Triangle temp=new Triangle(father);
+            temp.add(p);
+            this.triangle.add(temp);   
+            //System.err.println(triangle.size());
+        }
+    }
+    
+    public void addR(Regla r){
+        if(open){           
+           this.triangle.get(triangle.size()-1).add(r);
+        }
+        else{
+            open=true;
+            Triangle temp=new Triangle(50,50,100, TypeTriangle.Basic);
+            temp.add(r);
+            this.triangle.add(temp);   
+            //System.err.println(triangle.size());
         }
     }
 

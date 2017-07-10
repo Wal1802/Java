@@ -22,7 +22,7 @@ public class Content extends JPanel {
         this.setBorder(null);		
         this.setLayout(null);
         graph = new Graph(main);
-
+        this.addKeyListener(main);
         this.add(_textEditor = new textEditor(document, main));
 
         _textEditor.setVisible(false); // para que no salga de unare la pantalla de texto

@@ -16,6 +16,7 @@ public class bRegla extends JButton {
 
     public bRegla(Main main){
         super();
+        this.addKeyListener(main);
         this.setToolTipText("Regla");
         this.setIcon(new ImageIcon(Main.class.getResource("/Icon/Regla.png")));
         this.setForeground(Color.DARK_GRAY);
@@ -27,7 +28,7 @@ public class bRegla extends JButton {
                 main.seleccion.buttonRegla();
                 main.content._textEditor.setEditable(false);
                 System.out.println("Soy el boton de Regla");
-                main.content._textEditor.add(new Regla(main.content._textEditor.getSelectedText()));
+                //main.content._textEditor.add(new Regla(main.content._textEditor.getSelectedText()));
             }
         });
     }
