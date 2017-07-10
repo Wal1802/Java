@@ -177,9 +177,7 @@ public class Graph extends Canvas implements Runnable{
 
     public void addP(Premisa p){
         if(open){
-           Triangle temp=new Triangle(50,50,100, TypeTriangle.Subordinado);
-           this.triangle.add(temp);    
-           temp.add(p);
+           this.triangle.get(triangle.size()-1).add(p);
            
         }
         else{
@@ -192,14 +190,17 @@ public class Graph extends Canvas implements Runnable{
     }
     public void addP(Premisa p, Triangle father){
         if(open){
+           Regla r = this.triangle.get(triangle.size()-1).r;
+           this.triangle.remove(triangle.size()-1);
            Triangle temp=new Triangle(father);
            this.triangle.add(temp);    
            temp.add(p);
+           temp.add(r);
            
         }
         else{
             open=true;
-            Triangle temp=new Triangle(50,50,100, TypeTriangle.Basic);
+            Triangle temp=new Triangle(father);
             temp.add(p);
             this.triangle.add(temp);   
             //System.err.println(triangle.size());

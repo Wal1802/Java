@@ -8,6 +8,7 @@ import Type.Premisa;
 import Type.Regla;
 import java.awt.Color;
 import java.util.function.Consumer;
+import javax.swing.JOptionPane;
 import javax.swing.JTextPane;
 import javax.swing.text.Style;
 import javax.swing.text.StyleConstants;
@@ -19,7 +20,7 @@ public class MyEditText {
     JTextPane textPane;
     StyledDocument doc;
     Main main;
-    
+    Triangle aux;
     
     public MyEditText(Main main){
         this.main=main;
@@ -80,6 +81,7 @@ public class MyEditText {
             if(tmp.conclusion){
                 if(tmp.c.start==start && tmp.c.end== end){
                     flag=false;
+                    aux=tmp;
                     equals=true;
                     return;
                 }
@@ -96,26 +98,58 @@ public class MyEditText {
         int start= main.content._textEditor.getSelectionStart(), end=main.content._textEditor.getSelectionEnd();
         System.out.println("TODO - POP UP");
         if(!checkP(start, end)){
-            System.out.println("TODO - POP UP");
+            main.setAlwaysOnTop(false);
+            String[] options = {"Aceptar", "Sustituir", "Cancelar"};
+            int i = JOptionPane.showOptionDialog(null, "Es necesario que seleccione una opcion", "Titulo", JOptionPane.DEFAULT_OPTION, JOptionPane.QUESTION_MESSAGE, null, options, options[0]);
+            if (i == 0){
+                System.out.println ("Escogiste Aceptar");
+            }
+            else{
+                if(i == 1){
+                    System.out.println ("Escogiste Sustituir");
+                }
         }
+        }else
         if(!checkR(start, end)){
             System.out.println("TODO - POP UP");
-        }
+            main.setAlwaysOnTop(false);
+            String[] options = {"Borrar", "Cancelar"};
+            int i = JOptionPane.showOptionDialog(null, "Has seleccionado una regla deseas borrar la regla?", "", JOptionPane.DEFAULT_OPTION, JOptionPane.QUESTION_MESSAGE, null, options, options[0]);
+            if (i == 0){
+                System.out.println ("Borrar regla");
+            }
+            
+        }else
         if(!checkC(start, end)){
             if(equals){
-                System.err.println("TODO - POP UP Subordinado");
-            }
-            System.err.println("TODO - POP UP");
-        }
-        Style style = textPane.addStyle(main.content._textEditor.getSelectedText(), null);
-        StyleConstants.setForeground(style, Color.green);
-        main.content._textEditor.add(p=new Premisa(main.content._textEditor.getSelectedText(), main.content._textEditor.getSelectionStart(), main.content._textEditor.getSelectionEnd()));
-        main.content.graph.addP(p);
-        try{
-            doc.insertString(main.content._textEditor.getSelectionStart(), main.content._textEditor.getSelectedText(), style);
-            doc.remove(main.content._textEditor.getSelectionStart(),main.content._textEditor.getSelectedText().length());
-        }catch(Exception e){
+                String[] options = {"Aceptar", "Cancelar"};
+                int i = JOptionPane.showOptionDialog(null, "Has seleccionado una conclusion existente deseas hacer un argumento subordinado?", "Titulo", JOptionPane.DEFAULT_OPTION, JOptionPane.QUESTION_MESSAGE, null, options, options[0]);
+                if (i == 0){
+                    System.out.println ("Escogiste Aceptar"); Style style = textPane.addStyle(main.content._textEditor.getSelectedText(), null);
+                StyleConstants.setForeground(style, Color.green);
+                main.content._textEditor.add(p=new Premisa(main.content._textEditor.getSelectedText(), main.content._textEditor.getSelectionStart(), main.content._textEditor.getSelectionEnd()));
+                main.content.graph.addP(p, aux);
+               
+                }
+                else{
 
+               
+                }
+            }
+            else{
+                System.err.println("TODO - POP UP");
+            }
+        }else{
+            Style style = textPane.addStyle(main.content._textEditor.getSelectedText(), null);
+            StyleConstants.setForeground(style, Color.green);
+            main.content._textEditor.add(p=new Premisa(main.content._textEditor.getSelectedText(), main.content._textEditor.getSelectionStart(), main.content._textEditor.getSelectionEnd()));
+            main.content.graph.addP(p);
+            try{
+                doc.insertString(main.content._textEditor.getSelectionStart(), main.content._textEditor.getSelectedText(), style);
+                doc.remove(main.content._textEditor.getSelectionStart(),main.content._textEditor.getSelectedText().length());
+            }catch(Exception e){
+
+            }
         }
     }
     public void buttonRegla(){

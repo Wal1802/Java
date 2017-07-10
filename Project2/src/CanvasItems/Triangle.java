@@ -23,7 +23,7 @@ public class Triangle {
     public int xp[]= new int[5], yp[] = new int[5], sizef, x, y;
     public double distX, distY;
     public boolean clicked=false,regla,conclusion ,premisa=conclusion=regla=false, graph= true;
-    
+    public static int R[]= new int[4],G[]= new int[4],B[]= new int[4];
     public Triangle father;
     public String tag;
     public TypeTriangle type;
@@ -36,10 +36,30 @@ public class Triangle {
     //STATIC
     public static float zoom;
     static int id;
-    
+    /*
+        RGB[0] ----> Triangulo
+        RGB[1] ----> Texto Premisa
+        RGB[2] ----> Texto Regla
+        RGB[3] ----> Texto Conclusion
+    */
     static{
         zoom=1;
         id=0;
+        R[0]=252;
+        G[0]=0;
+        B[0]=0;
+        
+        R[1]=0;
+        G[1]=252;
+        B[1]=0;
+        
+        R[2]=250;
+        G[2]=210;
+        B[2]=1;
+        
+        R[3]=0;
+        G[3]=0;
+        B[3]=252;
     }   
 
     //CONSTRUCTORES
@@ -121,14 +141,20 @@ public class Triangle {
             g.setColor(Color.BLACK);
              act();
             //g.drawString(""+ID, x, y);
-            g.setColor(Color.blue);
-            if(premisa)
+            
+            if(premisa){
+                g.setColor(new Color(R[1], G[1],B[1]));
                 g.drawString("P "+tag, xp[0]+15, yp[0]+15);
-            if(conclusion)
-                g.drawString("C "+tag, xp[2]-10, yp[2]-15);
-            if(regla)
-                g.drawString("R "+tag, xp[1]-10, yp[1]-45);
-            g.setColor(Color.red);
+            }
+            if(conclusion){
+                g.setColor(new Color(R[3], G[3],B[3]));
+                 g.drawString("C "+tag, xp[2]-10, yp[2]-15);
+            }
+            if(regla){
+                g.setColor(new Color(R[2], G[2],B[2]));
+                 g.drawString("R "+tag, xp[1]-10, yp[1]-45);
+            }
+            g.setColor(new Color(R[0], G[0],B[0]));
             g.drawPolyline(xp, yp, 5);
             //g.drawPolygon(new Triangle(40+i, 200+i, 100-i*2).polygon());
             g.setColor(Color.white);

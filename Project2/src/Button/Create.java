@@ -66,7 +66,7 @@ public class Create extends JButton {
         }
 
         main.seleccion.buttonCreate();
-        main.content._textEditor.setText("Premisa Regla Conslusion");
+        main.content._textEditor.setText("Premisa Regla Conslusion\nPremisa Regla");
     }
 	
 }
